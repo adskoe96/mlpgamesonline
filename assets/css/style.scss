@@ -1,134 +1,173 @@
-$rays: 16;
+$color: #fff;
 
-.frame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 400px;
-  margin-top: -200px;
-  margin-left: -200px;
-  border-radius: 2px;
-	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
-	overflow: hidden;
-  background: #ad5389; 
-	background: linear-gradient(180deg, #3c1053, #ad5389);
-	
+.toggleButton {
+    cursor: pointer;
+    display: block;
+    transform-origin: 50% 50%;
+    transform-style: preserve-3d;
+    transition: transform .14s ease;
+    &:active {
+        transform: rotateX(30deg);
+    }
+    input {
+        display: none;
+        & + div {
+            border: 3px solid rgba($color, .2);
+            border-radius: 50%;
+            position: relative;
+            width: 44px;
+            height: 44px;
+            svg {
+                fill: none;
+                stroke-width: 3.6;
+                stroke: $color;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 44px;
+                height: 44px;
+                display: block;
+                position: absolute;
+                left: -3px;
+                top: -3px;
+                right: -3px;
+                bottom: -3px;
+                z-index: 1;
+                stroke-dashoffset: 162.6 - 38;
+                stroke-dasharray: 0 162.6 133 (162.6 - 133);
+                transition: all .4s ease 0s;
+            }
+            &:before,
+            &:after {
+                content: '';
+                width: 3px;
+                height: 16px;
+                background: $color;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                border-radius: 5px;
+            }
+            &:before {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+                animation: bounceInBefore .3s linear forwards .3s;
+            }
+            &:after {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+                animation: bounceInAfter .3s linear forwards .3s;
+            }
+        }
+        &:checked + div {
+            svg {
+                stroke-dashoffset: 162.6;
+                stroke-dasharray: 0 162.6 28 (162.6 - 28);
+                transition: all .4s ease .2s;
+            }
+            &:before {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+                animation: bounceInBeforeDont .3s linear forwards 0s;
+            }
+            &:after {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+                animation: bounceInAfterDont .3s linear forwards 0s;
+            }
+        }
+    }
 }
 
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+@keyframes bounceInBefore {
+    0% {
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+    }
+    50%{
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(45deg);
+    }
+    80%{
+        opacity: 1;
+        transform: scale(.89) translate(-50%, -50%) rotate(45deg);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
 }
 
-.checkbox {
-	width: 45px;
-	height: 45px;
-	
-	.check {
-		position:absolute;
-		visibility:hidden;
-		opacity:0;
-		top:0;
-		left:0;
-		width:0.1px;
-		height: 0.1px;
+@keyframes bounceInAfter {
+    0% {
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+    }
+    50%{
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(-45deg);
+    }
+    80%{
+        opacity: 1;
+        transform: scale(.89) translate(-50%, -50%) rotate(-45deg);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+}
 
-		& + label {
-			display:block;
-			width: 100%;
-			height: 100%;
-			border:2px solid #f0f0f0;
-			border-radius:50%;
-			box-sizing:border-box;
-			cursor:pointer;
-			z-index:10;
-			box-shadow: 
-			inset 1px 2px 7px 2px rgba(#000,0.6), 
-			4px 4px 4px 0px rgba(#333,0.4);
-			transition:all 0.7s ease;
-		}
-	
-		&:checked {
-			 & + label {
-				border-width:14px;
-				box-shadow: 
-					4px 4px 4px 0px rgba(#333,0.4);
-				background: 
-					linear-gradient(90deg, #da4453, #89216b);
-				animation: jelly .5s ease-in-out;
-			}
-			
-			& ~ .rays {
-			width: 100%;
-			height: 100%;
-			position:absolute;
-			top: 11px;
-			left: 22px;
-			z-index: -1;
-		.ray {
-				width: 2px;
-				height: 20px;
-				background: #f0f0f0;
-				position:absolute;
-		}
-	
-		@for $i from 1 through $rays {
-			
-			$base : $i - 1;
-			$angle: (360 / $rays) * $base;
-			
-			.ray:nth-child(#{$i}) {
-				transform: rotate($angle+deg)
-						translateY(140px);
-				animation: radiate#{$i} 0.5s ease;
-				opacity:0;
-			}
-			@keyframes radiate#{$i} {
-	from {
-		transform: rotate($angle+deg)
-						translateY(40px);
-		opacity: 1;
-	}
-	to {
-		transform: rotate($angle+deg)
-						translateY(140px);
-					opacity: 0;
-	}
+@keyframes bounceInBeforeDont {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+    }
 }
-			
-		}
+
+@keyframes bounceInAfterDont {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+    }
 }
-		}
-	}
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
-@keyframes jelly {
-	0% {
-    transform: scale(1, 1);
-	}
-	25% {
-    transform: scale(1.5, 0.75)
-	}	
-	35% {
-		transform: scale(0.75, 1.5);
-	}
-   
-	50% {
-		transform: scale(1.25, 0.75)
-	}
-    
-	65% {
-		transform: scale(0.75, 1.25)
-	}
-    
-	75% {
-		transform: scale(1.25,0.75)
-	}
-    
-	100% {
-		transform: scale(1, 1)		
-	}
-    
+
+* {
+    box-sizing: inherit;
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+// Center & dribbble
+body {
+    min-height: 100vh;
+    font-family: Roboto, Arial;
+    color: #ADAFB6;
+    background: #5628EE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .dribbble {
+        position: fixed;
+        display: block;
+        right: 24px;
+        bottom: 24px;
+        img {
+            display: block;
+            width: 76px;
+        }
+    }
 }
