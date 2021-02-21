@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <head>
-    <title>My Little Pony Online Games - Agreement with the rules</title>
+    <title id="title1">My Little Pony Online Games - Agreement with the rules</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <style>body{background-color: rgb(255, 140, 255);}</style>
-     <center>
-  <p>By agreeing to our rules, you go to the site with games in the "My Little Pony" fandom</p>
-  </center>  
-    <button class="big-button">Agree</button>
-    <video width="100%" hidden=true id="video-block">
-    <source src="assets/video/smile.mp4" type="video/mp4">
+    <style id="bg1">body{background-color: rgb(255, 140, 255);}</style>
+<center>
+    <div>
+    <img src="assets/images/maskot.png" alt="Pinkie Pie! :3" width="25%">
+    <p>You must read and accept our rules before you go to the My Little Pony games site</p>
+    <p><a href="assets/pages/rules.html">Read our rules</a></p> 
+    <br/>
+    <br/>
+</div>
+</center>
+<div>
+    <button class="big-button" onclick="aud_play()">Message from Pinky</button>
+    <br/>
+    <br/>
+    <button class="big-button" onclick="vid_play()">Agree</button>
+</div>
+<div>
+        <video width="100%" hidden=true id="video-block" loop=true>
+        <source src="assets/video/smile.mp4" type="video/mp4">
+    <audio src="assets/audio/void.wav" id="audio-block"></audio>
+</div>
+    <script>
+        function vid_play() 
+        {var elem = document.getElementById("video-block");document.webkitExitFullscreen();elem.requestFullscreen();elem.hidden=false;elem.play();} 
+        {var title1 = document.getElementById("title1"); title1.textContent="DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE"}
+        {var bg = document.getElementById("bg1"); bg.backgroundColor(225,28,45);}
+    </script>
+    <script>
+        function aud_play() {var playaud = document.getElementById("audio-block");playaud.play();}
+    </script>
 </body>
 </html>
