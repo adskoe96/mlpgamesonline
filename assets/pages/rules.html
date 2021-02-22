@@ -17,8 +17,18 @@
         <br/>
         <br/>
         <label>Additional Information: Site in development, try to tolerate bugs and faulty text as well as bad rules, thanks!</label>
+        <audio src="../audio/ZGVhZCBub3Rlcw==.wav" hidden=true id="audio-block"></audio>
+        <audio src="../audio/ZGVhZCBjb21tZW50cw==.wav" hidden=true id="audio-block2"></audio>
+        <button onclick="aud_play1()">Button</button>
+        <button onclick="aud_play2()">Button</button>
         <br/>
         <label>@adskoe96</label>
     </center>
+    <script>
+        function aud_play1() {var playaud = document.getElementById("audio-block");playaud.play();}
+    </script>
+    <script>
+        function aud_play2() {var playaud2 = document.getElementById("audio-block2");playaud2.play();}
+    </script>
 </body>
 </html>
