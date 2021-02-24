@@ -1,36 +1,44 @@
 <!DOCTYPE html>
-<head>
-    <title>My Little Pony Online Games - Agreement with the rules</title>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1251">
+    <title id="title1">My Little Pony Online Games - Agreement with the rules</title>
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <style>body{background-color: rgb(255, 140, 255);}</style>
-<center>
-    <div>
-    <img src="assets/images/maskot.png" alt="Pinkie Pie! :3" width="25%">
-    <p>You must read and accept our rules before you go to the My Little Pony games!</p>
-    <a href="assets/pages/rules.html">Read our rules here</a>
-    <br/>
-    <br/>
-</div>
-</center>
-<div>
-    <button class="big-button" onclick="aud_play()">Message from Pinky</button>
-    <br/>
-    <br/>
-    <button class="big-button" onclick="vid_play()">Agree</button>
-</div>
-<div>
-        <video width="100%" hidden=true id="video-block" loop=true>
-        <source src="assets/video/smile.mp4" type="video/mp4">
-    <audio src="assets/audio/void.wav" id="audio-block"></audio>
-</div>
+  </head>
+  <body>
+    <style id="bg1">body{background-color: rgb(255, 140, 255);}</style>
+    <center>
+      <div class="center"><img src="assets/images/maskot.png" alt="Pinkie Pie! :3"
+          width="15%"> </div>
+    </center>
+    <br>
+    <center>
+      <div> <br>
+        <br>
+        <strong><b><span style="color: white;">You must read and accept our
+              rules before you go to the My Little Pony games site</span></b></strong></div>
+      <div><strong><b><span style="color: white;"><br>
+            </span></b></strong></div>
+      <div><strong><b><span style="color: white;"></span><span style="color: white;"></span></b></strong><a
+          href="assets/pages/rules.html">Read our rules</a>
+        <p></p>
+      </div>
+    </center>
+    <center>
+      <div class="container"> <a onclick="vid_play()" class="btn effect01" target="_blank"><span>Agree</span></a>
+      </div>
+    </center>
+    <div> <video id="video-block" loop="true" hidden="true" width="100%"> <source
+          src="assets/video/smile.mp4" type="video/mp4"> <audio src="assets/audio/void.wav"
+          id="audio-block"></audio> </video></div>
     <script>
         function vid_play() 
-        {var elem = document.getElementById("video-block");document.webkitExitFullscreen();elem.requestFullscreen();elem.hidden=false;elem.play(); document.title = "DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE";}
+        {var elem = document.getElementById("video-block");document.webkitExitFullscreen();elem.requestFullscreen();elem.hidden=false;elem.play();} 
+        {var title1 = document.getElementById("title1"); document.title ="DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE"}
+        {var bg = document.getElementById("bg1"); document.styleSheets.bg(225,28,45);}
     </script>
     <script>
         function aud_play() {var playaud = document.getElementById("audio-block");playaud.play();}
     </script>
-</body>
+  </body>
 </html>
